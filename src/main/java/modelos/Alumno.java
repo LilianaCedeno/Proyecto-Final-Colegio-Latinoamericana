@@ -4,7 +4,7 @@ import java.util.*;
 
 import interfaces.ILectura;
 
-public class Alumno implements ILectura{
+public class Alumno{
 	 	
 		private String rut;
 	    private String nombre;
@@ -73,11 +73,10 @@ public class Alumno implements ILectura{
 	        }
 	        System.out.println("Materia no encontrada para el alumno.");
 	    }
-	    
 
-	@Override
-    public String toString() {
-        return "Alumno [Rut=: " + rut + ", Nombre: " + nombre + ", apellido=" + apellido + ", direccion=" + direccion + "]";
-    }
+	    @Override
+	    public String toString() {
+	    	return "Alumno [Rut=: " + rut + ", Nombre: " + nombre + ", apellido=" + apellido + ", direccion=" + direccion + "]";
+	    }
     
 }

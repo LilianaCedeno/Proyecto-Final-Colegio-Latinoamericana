@@ -42,6 +42,7 @@ public abstract class MenuTemplate{
                 break;
                 case 4: 
                 	agregarNotaPasoUno();
+                	break;
                case 5:
                 	terminarPrograma();// enviaré en un metodo la salida del menú
                 	break;
@@ -53,5 +54,6 @@ public abstract class MenuTemplate{
                 	break;
             }
         } while (opcion != 5);
+        //leer.close();
     }
 }

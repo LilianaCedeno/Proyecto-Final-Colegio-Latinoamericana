@@ -1,7 +1,7 @@
 package servicios;
 import java.util.*;
 
-public class PromedioServicioImp {
+public class PromedioServicioImp implements PromedioServicio {
 
     // Método que calcula el promedio de una lista de notas
     public double calcularPromedio(List<Double> notas) {
