@@ -63,7 +63,7 @@ public class Menu extends MenuTemplate {
             System.out.println("Alumno no encontrado.");
             return;
         }
-
+        
         System.out.println("Alumno tiene las siguientes materias agregadas:");
         for (int i = 0; i < alumno.getMaterias().size(); i++) {
             System.out.println((i + 1) + ". " + alumno.getMaterias().get(i).getNombre());
@@ -97,7 +97,7 @@ public class Menu extends MenuTemplate {
     @Override
     public void terminarPrograma() {
         System.out.println("Programa finalizado.");
-        leer.close();
+       
     }
     
     /** Este método solicita la ruta para exportar los datos, 

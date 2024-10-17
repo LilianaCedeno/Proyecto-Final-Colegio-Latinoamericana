@@ -14,15 +14,21 @@ import java.util.*;
 public class AlumnoServicio {
 	
     private Map<String, Alumno> listaAlumnos;
+    private List< Materia> materias;
 
     public AlumnoServicio() {
         this.listaAlumnos = new HashMap<>();
     }
 
     public void crearAlumno(Alumno alumno) {
-        listaAlumnos.put(alumno.getRut(), alumno);
+    	if(listaAlumnos.containsKey(alumno.getRut())) {
+    		System.out.println("El rut ingresado ya existe");
+    	}else {
+    		listaAlumnos.put(alumno.getRut(), alumno);
+    	}
     }
 
+    /**  Recibe un rutAlumno y  un currentMate de tipo Materia*/
     public void agregarMateria(String rut, int opcion) {
         Alumno alumno = listaAlumnos.get(rut);
         if (alumno != null) {
@@ -43,10 +49,14 @@ public class AlumnoServicio {
     //me esta dondo un erro.
     
     public void agregarNota(String rut, MateriaEmum nombreMateria, double nota) {
-        
+       
     	Alumno alumno = listaAlumnos.get(rut);
         if (alumno != null) {
-        	alumno.agregarNota(nombreMateria, nota); // Se pasa el nombre de la materia
+        	 for(Materia materia : alumno.getMaterias()) {
+             	if(materia.getNombre().equals(nombreMateria)){
+             		materia.agregarNota(nota);
+             	}
+             }
         } else {
             System.out.println("El alumno con RUT " + rut + " no existe.");
         }

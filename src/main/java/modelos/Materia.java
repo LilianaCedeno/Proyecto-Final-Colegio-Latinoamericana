@@ -27,4 +27,10 @@ public class Materia {
     public void agregarNota(double nota) {
         notas.add(nota); // Método para agregar una nota a la materia
     }
+
+	@Override
+	public String toString() {
+		return "Materia [nombre=" + nombre + ", notas=" + notas + "]";
+	}
+    
 }

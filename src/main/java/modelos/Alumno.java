@@ -13,7 +13,7 @@ public class Alumno implements ILectura{
 	    private List<Materia> materias;
 
 	    public Alumno() {
-	        this.materias = new ArrayList<>(); 
+	        materias = new ArrayList<>(); 
 	    }
 
 	    public String getRut() {
@@ -64,20 +64,17 @@ public class Alumno implements ILectura{
 	    
 	  // Método para agregar una nota a una materia específica
 	    
-	    public void agregarNota(MateriaEmum nombreMateria, double nota) {
-	        for (Materia materia : materias) {
-	            if (materia.getNombre() == nombreMateria) { // Comparamos con el enum
-	                materia.agregarNota(nota); // Utilizamos el método de la clase Materia
-	                return;
-	            }
-	        }
-	        System.out.println("Materia no encontrada para el alumno.");
-	    }
+	   
 	    
 
 	@Override
     public String toString() {
-        return "Alumno [Rut=: " + rut + ", Nombre: " + nombre + ", apellido=" + apellido + ", direccion=" + direccion + "]";
+        return "Alumno [Rut=: " + rut + 
+        		", Nombre: " + nombre + 
+        		", apellido=" + apellido + 
+        		", direccion=" + direccion + 
+        		", materias=" +  materias+
+        		"]";
     }
     
 }
