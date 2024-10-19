@@ -82,7 +82,6 @@ public class Menu extends MenuTemplate {
         System.out.print("Ingresar nota: ");
         double nota = leer.nextDouble();
         leer.nextLine(); 
-
         alumnoServicio.agregarNota(rut, materiaSeleccionada.getNombre(), nota);
         System.out.println("--- ¡Nota agregada! ---");
     }

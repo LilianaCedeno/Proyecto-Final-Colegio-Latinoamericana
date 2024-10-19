@@ -3,6 +3,8 @@ package modelos;
 import java.util.ArrayList;
 import java.util.List;
 
+import servicios.PromedioServicioImp;
+
 public class Materia {
     private MateriaEmum nombre; // Asegúrate de que el nombre sea de tipo MateriaEnum
     private List<Double> notas;
@@ -26,6 +28,11 @@ public class Materia {
 
     public void agregarNota(double nota) {
         notas.add(nota); // Método para agregar una nota a la materia
+    }
+    
+    public double calcularPromedio() {
+    	PromedioServicioImp servicioPromedio = new PromedioServicioImp();
+    	return servicioPromedio.calcularPromedio(notas);
     }
 
 	@Override
