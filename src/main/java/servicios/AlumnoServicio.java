@@ -1,101 +1,29 @@
-// En el paquete servicios
+
 package servicios;
+
+import java.util.List;
+import java.util.Map;
 
 import modelos.Alumno;
 import modelos.Materia;
 import modelos.MateriaEmum;
 
-import java.util.*;
-
-/**Esta clase se encargará de gestionar las operaciones 
- * relacionadas con el objeto Alumno, como crearlo, agregarle materias,
- *  y obtener su lista.*/
-
-public class AlumnoServicio {
+public interface AlumnoServicio {
 	
-    private Map<String, Alumno> listaAlumnos;
-    private List< Materia> materias;
 
-    public AlumnoServicio() {
-        this.listaAlumnos = new HashMap<>();
-    }
+	 public void agregarMateria(String rut, int opcion);
+	 
+	 public void agregarNota(String rut, MateriaEmum nombreMateria, double nota);
+	 
+	 public List<Materia> materiasPorAlumno(String rutAlumno);
+	 
+	 public Map<String, Alumno> listarAlumnos();
+	 
+	 public void crearAlumno(Alumno alumno);
+	 
+	 public boolean existeAlumno(String rut);
+	 
+	 public Boolean validarNota(Double n);
+	 
 
-    public void crearAlumno(Alumno alumno) {
-    	if(listaAlumnos.containsKey(alumno.getRut())) {
-    		System.out.println("El rut ingresado ya existe");
-    	}else {
-    		listaAlumnos.put(alumno.getRut(), alumno);
-    	}
-    }
-
-    /**  Recibe un rutAlumno y  un currentMate de tipo Materia*/
-    public void agregarMateria(String rut, int opcion) {
-        Alumno alumno = listaAlumnos.get(rut);
-        if (alumno != null) {
-        	MateriaEmum materiaEnum = obtenerMateriaEnum(opcion);
-            if (materiaEnum != null) {
-                Materia nuevaMateria = new Materia(materiaEnum);
-                nuevaMateria.setNombre(materiaEnum);
-                alumno.agregarMateria(nuevaMateria);
-            } else {
-                System.out.println("Opción de materia no válida.");
-            }
-        } else {
-            System.out.println("Alumno no encontrado.");
-        }
-    }
-
-    // Método para agregar una nota a  materia del alumno por RUT debo revisar el funcionamiento
-    //me esta dondo un erro.
-    
-    public void agregarNota(String rut, MateriaEmum nombreMateria, double nota) {
-       
-    	Alumno alumno = listaAlumnos.get(rut);
-        if (alumno != null) {
-        	 for(Materia materia : alumno.getMaterias()) {
-             	if(materia.getNombre().equals(nombreMateria)){
-             		materia.agregarNota(nota);
-             	}
-             }
-        } else {
-            System.out.println("El alumno con RUT " + rut + " no existe.");
-        }
-    }
-
-  /**Método para obtener una lista de materias de un alumno por su RUT*/
-    
-    public List<Materia> materiasPorAlumno(String rutAlumno) {
-        
-    	Alumno alumno = listaAlumnos.get(rutAlumno);
-        if (alumno != null) {
-            return alumno.getMaterias();
-        } else {
-            System.out.println("Alumno no encontrado.");
-            return new ArrayList<>(); // Retonramos una lista vacía si no encuentra el alumno
-        }
-    }
-
-    /** Método para listar todos los alumnos*/
-    
-    public Map<String, Alumno> listarAlumnos() {
-        return listaAlumnos;
-    }
-
-
-    /** Método auxiliar para convertir la opción numérica en MateriaEnum*/
-    
-    private MateriaEmum obtenerMateriaEnum(int opcion) {
-        switch (opcion) {
-            case 1:
-                return MateriaEmum.MATEMATICAS;
-            case 2:
-                return MateriaEmum.LENGUAJE;
-            case 3:
-                return MateriaEmum.CIENCIA;
-            case 4:
-                return MateriaEmum.HISTORIA;
-            default:
-                return null;
-        }
-    }
 }

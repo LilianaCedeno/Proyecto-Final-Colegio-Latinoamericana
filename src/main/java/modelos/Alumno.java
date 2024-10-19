@@ -4,7 +4,7 @@ import java.util.*;
 
 import interfaces.ILectura;
 
-public class Alumno implements ILectura{
+public class Alumno{
 	 	
 		private String rut;
 	    private String nombre;
@@ -64,17 +64,26 @@ public class Alumno implements ILectura{
 	    
 	  // Método para agregar una nota a una materia específica
 	    
-	   
-	    
 
-	@Override
-    public String toString() {
-        return "Alumno [Rut=: " + rut + 
-        		", Nombre: " + nombre + 
-        		", apellido=" + apellido + 
-        		", direccion=" + direccion + 
-        		", materias=" +  materias+
-        		"]";
-    }
+	    public void agregarNota(MateriaEmum nombreMateria, double nota) {
+	        for (Materia materia : materias) {
+	            if (materia.getNombre() == nombreMateria) { // Comparamos con el enum
+	                materia.agregarNota(nota); // Utilizamos el método de la clase Materia
+	                return;
+	            }
+	        }
+	        System.out.println("Materia no encontrada para el alumno.");
+	    }
+
+		@Override
+	    public String toString() {
+	        return "Alumno [Rut=: " + rut + 
+	        		", Nombre: " + nombre + 
+	        		", apellido=" + apellido + 
+	        		", direccion=" + direccion + 
+	        		", materias=" +  materias+
+	        		"]";
+	    }
+
     
 }

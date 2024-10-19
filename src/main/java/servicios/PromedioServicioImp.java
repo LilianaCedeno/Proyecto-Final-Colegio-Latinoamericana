@@ -1,9 +1,10 @@
 package servicios;
 import java.util.*;
 
-public class PromedioServicioImp {
+public class PromedioServicioImp implements PromedioServicio {
 
     // Método que calcula el promedio de una lista de notas
+	@Override
     public double calcularPromedio(List<Double> notas) {
         if (notas == null || notas.isEmpty()) {
             return 0.0; // Retorna 0 si no hay notas
