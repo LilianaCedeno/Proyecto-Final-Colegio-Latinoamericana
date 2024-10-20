@@ -24,17 +24,19 @@ public class Menu extends MenuTemplate {
   
        @Override
     public void crearAlumno() {
-        Alumno alumno = new Alumno();
+        
+    	System.out.println("--- Crear Alumno ---");
         System.out.print("Ingresa RUT: ");
-        alumno.setRut(leer.nextLine());
+        String rut = leer.nextLine();
         System.out.print("Ingresa nombre: ");
-        alumno.setNombre(leer.nextLine());
+        String nombre = leer.nextLine();
         System.out.print("Ingresa apellido: ");
-        alumno.setApellido(leer.nextLine());
+        String apellido = leer.nextLine();
         System.out.print("Ingresa dirección: ");
-        alumno.setDireccion(leer.nextLine());
+        String direccion = leer.nextLine();
 
-        alumnoServicio.crearAlumno(alumno);
+        Alumno nuevoAlumno = new Alumno(rut, nombre, apellido, direccion);
+        alumnoServicio.crearAlumno(nuevoAlumno);
         System.out.println( "\u001B[32m"+"------------------------"+"\u001B[0m");
         System.out.println( "\u001B[32m"+"¡Alumno agregado!"+"\u001B[0m");
         System.out.println( "\u001B[32m"+"------------------------"+"\u001B[0m");
@@ -66,16 +68,6 @@ public class Menu extends MenuTemplate {
         	System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
 	        System.out.println("Selecciona una Materia:");
 	        
-    /*/---------------------------------------------------------------------------------///
-	        List<Materia> materias = alumnoServicio.materiasPorAlumno(rut);
-	        System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
-	        for (int i = 0; i < materias.size(); i++) {
-	            System.out.println((i + 1) + "- " + materias.get(i).getNombre());
-	        }
-	        
-	        System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
-	        System.out.print("Seleccionar materia: ");*/
-	//--------------------------------------------------------------------------------------//
 	        
 	        System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
 	        System.out.println("1. MATEMATICAS\n2. LENGUAJE\n3. CIENCIA\n4. HISTORIA");

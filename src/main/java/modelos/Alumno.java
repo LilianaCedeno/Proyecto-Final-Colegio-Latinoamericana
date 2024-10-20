@@ -12,9 +12,17 @@ public class Alumno{
 	    private String direccion;
 	    private List<Materia> materias;
 
-	    public Alumno() {
-	        materias = new ArrayList<>(); 
-	    }
+	    
+	    public Alumno(String rut, String nombre, String apellido, String direccion) {
+			super();
+			this.rut = rut;
+			this.nombre = nombre;
+			this.apellido = apellido;
+			this.direccion = direccion;
+			this.materias = new ArrayList<>();
+		}
+
+	
 
 	    public String getRut() {
 	        return rut;

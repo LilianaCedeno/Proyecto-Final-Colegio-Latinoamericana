@@ -51,7 +51,7 @@ public class ArchivosServicio {
 
                     writer.write("Materia: " + materia.getNombre() + ", Notas: " + notasStr.toString() + ", Promedio: " + materia.calcularPromedio());
                     writer.newLine();
-                    writer.write("-----------------------------------------------------------------------------------------------------------------");                }
+                    }
                 writer.newLine();
             }
             writer.write("------------------------------------------");
