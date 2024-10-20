@@ -6,7 +6,7 @@ import java.util.List;
 import servicios.PromedioServicioImp;
 
 public class Materia {
-    private MateriaEmum nombre; // Asegúrate de que el nombre sea de tipo MateriaEnum
+    private MateriaEmum nombre; 
     private List<Double> notas;
 
     public Materia(MateriaEmum nombre) {

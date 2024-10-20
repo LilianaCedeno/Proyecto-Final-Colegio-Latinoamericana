@@ -4,6 +4,8 @@ import java.util.*;
 import modelos.Alumno;
 import modelos.Materia;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class ArchivosServicio {
 
@@ -13,6 +15,19 @@ public class ArchivosServicio {
     y escribe sus datos en el archivo, calculando el promedio de sus notas.*/
     
     public void exportarDatos(Map<String, Alumno> alumnos, String ruta) {
+    	
+    	  // Validar si la ruta es válida
+        if (!Files.exists(Paths.get(ruta).getParent())) {
+            System.err.println("La ruta proporcionada no es válida o el directorio no existe.");
+            return;
+        }
+
+        if (!ruta.endsWith(".txt")) {
+            System.err.println("Por favor, ingresa un archivo con extensión .txt");
+            return;
+        }
+    	
+    	
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
 
             writer.write("---------- PROMEDIOS ----------");
@@ -36,7 +51,7 @@ public class ArchivosServicio {
 
                     writer.write("Materia: " + materia.getNombre() + ", Notas: " + notasStr.toString() + ", Promedio: " + materia.calcularPromedio());
                     writer.newLine();
-                }
+                    writer.write("-----------------------------------------------------------------------------------------------------------------");                }
                 writer.newLine();
             }
             writer.write("------------------------------------------");

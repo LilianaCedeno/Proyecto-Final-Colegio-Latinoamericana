@@ -62,8 +62,21 @@ public class Menu extends MenuTemplate {
         
         String resp;
         do {
-	        System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
+        	
+        	System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
 	        System.out.println("Selecciona una Materia:");
+	        
+    /*/---------------------------------------------------------------------------------///
+	        List<Materia> materias = alumnoServicio.materiasPorAlumno(rut);
+	        System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
+	        for (int i = 0; i < materias.size(); i++) {
+	            System.out.println((i + 1) + "- " + materias.get(i).getNombre());
+	        }
+	        
+	        System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
+	        System.out.print("Seleccionar materia: ");*/
+	//--------------------------------------------------------------------------------------//
+	        
 	        System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
 	        System.out.println("1. MATEMATICAS\n2. LENGUAJE\n3. CIENCIA\n4. HISTORIA");
 	        System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
@@ -107,7 +120,6 @@ public class Menu extends MenuTemplate {
             return; // Sale de la opcion de de agragar nota.
         }
 
-
         System.out.println("Alumno tiene las siguientes materias:");
         List<Materia> materias = alumnoServicio.materiasPorAlumno(rut);
         System.out.println( "\u001B[33m"+"------------------------"+"\u001B[0m");
@@ -127,7 +139,7 @@ public class Menu extends MenuTemplate {
             return;
         }
         String r="";
-        //while(true) {	
+       
 	        do {
 	        	try {
 	        	    System.out.print("Ingresar nota (0,1 y 7,0)");
@@ -142,9 +154,7 @@ public class Menu extends MenuTemplate {
 					        System.out.println("Desea agregar otra nota (si - no)");
 					        r = leer.nextLine();
 					        
-			        	} else {
-			                System.out.println("Nota en formato incorrecto. Debe estar entre 0,1 y 7,0. Inténtelo nuevamente.");
-			            } 
+			        	}
 		      }catch (InputMismatchException e) {
 			            System.out.println("Entrada no válida. Por favor, ingrese un número decimal.");
 			            leer.next(); 
@@ -155,6 +165,7 @@ public class Menu extends MenuTemplate {
     	
      }
 
+
     @Override
     public void listarAlumnos() {
         alumnoServicio.listarAlumnos().forEach((rut, alumno) -> {
@@ -163,7 +174,7 @@ public class Menu extends MenuTemplate {
         });
     }
 
-  
+        
     /** Este método solicita la ruta para exportar los datos, 
      * luego llama a exportarDatos()
      *  del servicio ArchivosServicio, usando la lista de alumnos 
@@ -175,7 +186,7 @@ public class Menu extends MenuTemplate {
         System.out.print("Ingresa la ruta para exportar datos: ");
         String ruta = leer.nextLine();
         archivoServicio.exportarDatos(alumnoServicio.listarAlumnos(), ruta);
-        System.out.println("Datos exportados correctamente.");
+        //System.out.println("Datos exportados correctamente.");
     }
     
     @Override
